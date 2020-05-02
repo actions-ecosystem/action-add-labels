@@ -23,7 +23,7 @@ It would be more useful to use this with other GitHub Actions' outputs.
 
 ## Example
 
-### Add a single label
+### Add a single label with a comment
 
 ```yaml
 name: Add Label
@@ -38,12 +38,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions-ecosystem/action-add-labels@v1
+        if: ${{ startsWith(github.event.comment.body, '/add-labels') }}
         with:
           github_token: ${{ secrets.github_token }}
           labels: bug
 ```
 
-### Add multiple labels
+### Add multiple labels with a comment
 
 ```yaml
 name: Add Labels
@@ -58,6 +59,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions-ecosystem/action-add-labels@v1
+        if: ${{ startsWith(github.event.comment.body, '/add-labels') }}
         with:
           github_token: ${{ secrets.github_token }}
           labels: |
