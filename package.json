@@ -1,0 +1,48 @@
+{
+  "name": "action-add-labels",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Add labels to an issue or a pull request",
+  "main": "lib/main.js",
+  "scripts": {
+    "build": "tsc && ncc build",
+    "format": "prettier --write **/*.ts",
+    "format-check": "prettier --check **/*.ts",
+    "lint": "eslint src/**/*.ts",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/actions-ecosystem/action-add-labels.git"
+  },
+  "keywords": [
+    "actions",
+    "github",
+    "label"
+  ],
+  "author": "The Actions Ecosystem Authors",
+  "license": "Apache 2.0",
+  "dependencies": {
+    "@actions/core": "^1.2.3",
+    "@actions/github": "^2.1.1",
+    "@octokit/rest": "^16.43.1",
+    "semver": "^6.1.1"
+  },
+  "devDependencies": {
+    "@octokit/webhooks": "^7.4.0",
+    "@types/jest": "^25.2.1",
+    "@types/node": "^12.7.12",
+    "@types/semver": "^6.0.0",
+    "@typescript-eslint/parser": "^2.8.0",
+    "@zeit/ncc": "^0.20.5",
+    "eslint": "^5.16.0",
+    "eslint-plugin-github": "^2.0.0",
+    "eslint-plugin-jest": "^22.21.0",
+    "jest": "^24.9.0",
+    "jest-circus": "^24.9.0",
+    "js-yaml": "^3.13.1",
+    "prettier": "^1.19.1",
+    "ts-jest": "^24.2.0",
+    "typescript": "^3.6.4"
+  }
+}

@@ -1,0 +1,23 @@
+name: Actions Ecosystem Add Labels
+description: Add labels to an issue or a pull request.
+author: The Actions Ecosystem Authors
+inputs:
+  github_token:
+    description: A GitHub token.
+    required: true
+  labels:
+    description: The labels' name to be added. Must be separated with line breaks if there're multiple labels.
+    required: true
+  repo:
+    description: The owner and repository name. e.g.) Codertocat/Hello-World.
+    required: false
+    default: ${{ github.repository }}
+  number:
+    description: The number of the issue or pull request.
+    required: false
+runs:
+  using: node12
+  main: dist/index.js
+branding:
+  icon: bookmark
+  color: green
