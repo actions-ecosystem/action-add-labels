@@ -1,6 +1,7 @@
 # Action Add Labels
 
 [![actions-workflow-test][actions-workflow-test-badge]][actions-workflow-test]
+[![release][release-badge]][release]
 
 ![screenshot](./docs/assets/screenshot.png)
 
@@ -74,3 +75,6 @@ Action Size is released under the [Apache License 2.0](./LICENSE).
 
 [actions-workflow-test]: https://github.com/actions-ecosystem/action-add-labels/actions?query=workflow%3ATest
 [actions-workflow-test-badge]: https://img.shields.io/github/workflow/status/actions-ecosystem/action-add-labels/Test?label=Test&style=for-the-badge&logo=github
+
+[release]: https://github.com/actions-ecosystem/action-add-labels>/releases
+[release-badge]: https://img.shields.io/github/v/release/actions-ecosystem/action-add-labels>?style=for-the-badge&logo=github
