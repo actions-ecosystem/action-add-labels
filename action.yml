@@ -9,7 +9,7 @@ inputs:
     description: The labels' name to be added. Must be separated with line breaks if there're multiple labels.
     required: true
   repo:
-    description: The owner and repository name. e.g.) Codertocat/Hello-World.
+    description: The owner and repository name. e.g.) Codertocat/Hello-World
     required: false
     default: ${{ github.repository }}
   number:
