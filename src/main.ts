@@ -19,7 +19,7 @@ async function getAndValidateArgs(): Promise<ProcessorOptions> {
       githubToken: core.getInput('github_token', { required: true }),
 
       labels: core
-        .getInput('labels', { required: true })
+        .getInput('labels')
         .split('\n')
         .filter(l => l !== ''),
 

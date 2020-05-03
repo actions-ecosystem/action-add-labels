@@ -3537,7 +3537,7 @@ function getAndValidateArgs() {
             const args = {
                 githubToken: core.getInput('github_token', { required: true }),
                 labels: core
-                    .getInput('labels', { required: true })
+                    .getInput('labels')
                     .split('\n')
                     .filter(l => l !== ''),
                 owner: core.getInput('repo').split('/')[0],
@@ -5058,6 +5058,9 @@ class Processor {
     process() {
         return __awaiter(this, void 0, void 0, function* () {
             try {
+                if (this.options.labels.length === 0) {
+                    return;
+                }
                 let number = 0;
                 const payload = github.context.payload;
                 if (isWebhookPayloadPullRequest(payload)) {
