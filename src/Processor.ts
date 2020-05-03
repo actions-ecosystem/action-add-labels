@@ -25,6 +25,10 @@ export class Processor {
 
   async process(): Promise<void> {
     try {
+      if (this.options.labels.length === 0) {
+        return;
+      }
+
       let number = 0;
       const payload = github.context.payload;
 
