@@ -19,8 +19,8 @@ It would be more useful to use this with other GitHub Actions' outputs.
 |--------------|-----------------------------------------------------------------------------------------------|----------|----------|----------------------------|
 | github_token | A GitHub token.                                                                               | `string` | `true`   | `N/A`                      |
 | labels       | The labels' name to be added. Must be separated with line breaks if there're multiple labels. | `string` | `true`   | `N/A`                      |
-| number       | The number of the issue or pull request.                                                      | `string` | `false`  | `N/A`                      |
 | repo         | The owner and repository name. e.g.) Codertocat/Hello-World.                                  | `string` | `false`  | `${{ github.repository }}` |
+| number       | The number of the issue or pull request.                                                      | `number` | `false`  | `N/A`                      |
 
 ## Example
 
