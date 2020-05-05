@@ -1,6 +1,6 @@
 {
   "name": "action-add-labels",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
   "description": "Add labels to an issue or a pull request",
   "main": "lib/main.js",
