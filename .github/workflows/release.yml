@@ -1,8 +1,9 @@
 name: Create Release
 
 on:
-  pull_request:
-    types: [closed]
+  push:
+    branches:
+      - master
 
 jobs:
   release:
@@ -10,13 +11,23 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - uses: actions-ecosystem/action-get-merged-pull-request@v1
+        id: get-merged-pull-request
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
       - uses: actions-ecosystem/action-release-label@v1
         id: release-label
-        if: ${{ github.event.pull_request.merged == true }}
+        if: ${{ steps.get-merged-pull-request.outputs.title != null }}
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          labels: ${{ steps.get-merged-pull-request.outputs.labels }}
 
       - uses: actions-ecosystem/action-get-latest-tag@v1
         id: get-latest-tag
         if: ${{ steps.release-label.outputs.level != null }}
+        with:
+          semver_only: true
 
       - uses: actions-ecosystem/action-bump-semver@v1
         id: bump-semver
@@ -27,16 +38,16 @@ jobs:
 
       - uses: actions-ecosystem/action-regex-match@v2
         id: regex-match
-        if: ${{ steps.release-label.outputs.level != null }}
+        if: ${{ steps.bump-semver.outputs.new_version != null }}
         with:
-          text: ${{ github.event.pull_request.body }}
+          text: ${{ steps.get-merged-pull-request.outputs.body }}
           regex: '```release_note([\s\S]*)```'
 
       - uses: actions-ecosystem/action-push-tag@v1
-        if: ${{ steps.release-label.outputs.level != null }}
+        if: ${{ steps.bump-semver.outputs.new_version != null }}
         with:
           tag: ${{ steps.bump-semver.outputs.new_version }}
-          message: "${{ steps.bump-semver.outputs.new_version }}: PR #${{ github.event.pull_request.number }} ${{ github.event.pull_request.title }}"
+          message: "${{ steps.bump-semver.outputs.new_version }}: PR #${{ steps.get-merged-pull-request.outputs.number }} ${{ steps.get-merged-pull-request.outputs.title }}"
 
       - uses: actions/create-release@v1
         if: ${{ steps.release-label.outputs.level == 'major' || steps.release-label.outputs.level == 'minor' }}
@@ -51,5 +62,6 @@ jobs:
         if: ${{ steps.bump-semver.outputs.new_version != null }}
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          number: ${{ steps.get-merged-pull-request.outputs.number }}
           body: |
-            The new version [${{ steps.bump-semver.outputs.new_version }}](https://github.com/${{ github.repository }}/releases/tag/${{ steps.bump-semver.outputs.new_version }}) has been released.
+            The new version [${{ steps.bump-semver.outputs.new_version }}](https://github.com/${{ github.repository }}/releases/tag/${{ steps.bump-semver.outputs.new_version }}) has been released :tada:
