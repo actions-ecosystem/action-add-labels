@@ -1,37 +1,30 @@
+import * as github from '@actions/github';
 import * as core from '@actions/core';
-import { Processor, ProcessorOptions } from './Processor';
 
 async function run(): Promise<void> {
   try {
-    const args = await getAndValidateArgs();
-    const processor: Processor = new Processor(args);
+    const githubToken = core.getInput('github_token', { required: true });
 
-    await processor.process();
-  } catch (error) {
-    core.error(error);
-    core.setFailed(error.message);
-  }
-}
+    const labels = core
+      .getInput('labels')
+      .split('\n')
+      .filter(l => l !== '');
+    const [owner, repo] = core.getInput('repo').split('/');
+    const number =
+      core.getInput('number') === ''
+        ? github.context.issue.number
+        : parseInt(core.getInput('number'));
 
-async function getAndValidateArgs(): Promise<ProcessorOptions> {
-  try {
-    const args: ProcessorOptions = {
-      githubToken: core.getInput('github_token', { required: true }),
-
-      labels: core
-        .getInput('labels')
-        .split('\n')
-        .filter(l => l !== ''),
-
-      owner: core.getInput('repo').split('/')[0],
-      repo: core.getInput('repo').split('/')[1],
-      number:
-        core.getInput('number') === '' ? 0 : parseInt(core.getInput('number'))
-    };
-
-    return args;
-  } catch (error) {
-    throw error;
+    const client = new github.GitHub(githubToken);
+    await client.issues.addLabels({
+      labels,
+      owner,
+      repo,
+      issue_number: number
+    });
+  } catch (e) {
+    core.error(e);
+    core.setFailed(e.message);
   }
 }
 
