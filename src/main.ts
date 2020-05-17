@@ -15,6 +15,10 @@ async function run(): Promise<void> {
         ? github.context.issue.number
         : parseInt(core.getInput('number'));
 
+    if (labels.length === 0) {
+      return;
+    }
+
     const client = new github.GitHub(githubToken);
     await client.issues.addLabels({
       labels,

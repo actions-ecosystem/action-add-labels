@@ -2040,6 +2040,9 @@ function run() {
             const number = core.getInput('number') === ''
                 ? github.context.issue.number
                 : parseInt(core.getInput('number'));
+            if (labels.length === 0) {
+                return;
+            }
             const client = new github.GitHub(githubToken);
             yield client.issues.addLabels({
                 labels,
