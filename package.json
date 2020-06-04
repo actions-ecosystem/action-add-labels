@@ -24,7 +24,7 @@
   "license": "Apache 2.0",
   "dependencies": {
     "@actions/core": "^1.2.3",
-    "@actions/github": "^2.1.1",
+    "@actions/github": "^3.0.0",
     "@octokit/rest": "^17.9.3",
     "semver": "^6.1.1"
   },
