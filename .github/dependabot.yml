@@ -6,7 +6,7 @@ updates:
       interval: daily
       time: "09:00"
       timezone: Asia/Tokyo
-    open-pull-requests-limit: 10
+    open-pull-requests-limit: 5
     labels:
       - dependencies
       - dependencies/dependabot
@@ -16,7 +16,7 @@ updates:
       interval: daily
       time: "09:00"
       timezone: Asia/Tokyo
-    open-pull-requests-limit: 10
+    open-pull-requests-limit: 5
     labels:
       - dependencies
       - dependencies/dependabot
