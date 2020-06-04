@@ -10,6 +10,7 @@ updates:
     labels:
       - dependencies
       - dependencies/dependabot
+      - dependencies/npm
   - package-ecosystem: github-actions
     directory: "/"
     schedule:
@@ -20,3 +21,4 @@ updates:
     labels:
       - dependencies
       - dependencies/dependabot
+      - dependencies/github-actions
