@@ -58,7 +58,7 @@ jobs:
           release_name: ${{ steps.bump-semver.outputs.new_version }}
           body: ${{ steps.regex-match.outputs.group1 }}
 
-      - uses: actions-ecosystem/action-create-comment@v1
+      - uses: actions-ecosystem/action-create-comment@v1.0.1
         if: ${{ steps.bump-semver.outputs.new_version != null }}
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
