@@ -4,7 +4,8 @@ author: The Actions Ecosystem Authors
 inputs:
   github_token:
     description: A GitHub token.
-    required: true
+    required: false
+    default: ${{ github.token }}
   labels:
     description: The labels' name to be added. Must be separated with line breaks if there're multiple labels.
     required: true

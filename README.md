@@ -17,7 +17,7 @@ It would be more useful to use this with other GitHub Actions' outputs.
 
 |      NAME      |                                           DESCRIPTION                                           |   TYPE   | REQUIRED |                                     DEFAULT                                     |
 | -------------- | ----------------------------------------------------------------------------------------------- | -------- | -------- | ------------------------------------------------------------------------------- |
-| `github_token` | A GitHub token.                                                                                 | `string` | `true`   | `N/A`                                                                           |
+| `github_token` | A GitHub token.                                                                                 | `string` | `false`   | `${{ github.token }}`                                                                           |
 | `labels`       | The labels' name to be removed. Must be separated with line breaks if there're multiple labels. | `string` | `true`   | `N/A`                                                                           |
 | `number`       | The number of the issue or pull request.                                                        | `number` | `false`  | `N/A`                                                                           |
 | `repo`         | The owner and repository name. e.g.) `Codertocat/Hello-World`                                   | `string` | `false`  | `${{ github.event.issue.number }}` or `${{ github.event.pull_request.number }}` |
@@ -41,7 +41,6 @@ jobs:
       - uses: actions-ecosystem/action-add-labels@v1
         if: ${{ startsWith(github.event.comment.body, '/add-labels') }}
         with:
-          github_token: ${{ secrets.github_token }}
           labels: bug
 ```
 
@@ -62,7 +61,6 @@ jobs:
       - uses: actions-ecosystem/action-add-labels@v1
         if: ${{ startsWith(github.event.comment.body, '/add-labels') }}
         with:
-          github_token: ${{ secrets.github_token }}
           labels: |
             documentation
             changelog
