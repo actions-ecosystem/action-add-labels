@@ -15,7 +15,7 @@ jobs:
         id: release-label
         if: ${{ startsWith(github.event.label.name, 'release/') }}
 
-      - uses: actions-ecosystem/action-get-latest-tag@v1
+      - uses: actions-ecosystem/action-get-latest-tag@v1.4.1
         id: get-latest-tag
         if: ${{ steps.release-label.outputs.level != null }}
         with:
