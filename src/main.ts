@@ -19,7 +19,7 @@ async function run(): Promise<void> {
       return;
     }
 
-    const client = new github.GitHub(githubToken);
+    const client = new github.getOctokit(githubToken);
     await client.issues.addLabels({
       labels,
       owner,
