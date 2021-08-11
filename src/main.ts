@@ -3,7 +3,7 @@ import * as core from '@actions/core';
 
 async function run(): Promise<void> {
   try {
-    const githubToken = core.getInput('github_token', { required: true });
+    const githubToken = core.getInput('github_token');
 
     const labels = core
       .getInput('labels')

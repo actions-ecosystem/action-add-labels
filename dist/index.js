@@ -2031,7 +2031,7 @@ const core = __importStar(__webpack_require__(393));
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const githubToken = core.getInput('github_token', { required: true });
+            const githubToken = core.getInput('github_token');
             const labels = core
                 .getInput('labels')
                 .split('\n')
