@@ -37,8 +37,11 @@ jobs:
   add_label:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions-ecosystem/action-add-labels@v1
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - name: add label
+        uses: actions-ecosystem/action-add-labels@v1
         if: ${{ startsWith(github.event.comment.body, '/add-labels') }}
         with:
           labels: bug
@@ -57,8 +60,11 @@ jobs:
   add_labels:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions-ecosystem/action-add-labels@v1
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - name: add labels
+        uses: actions-ecosystem/action-add-labels@v1
         if: ${{ startsWith(github.event.comment.body, '/add-labels') }}
         with:
           labels: |
