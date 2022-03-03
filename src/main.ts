@@ -19,16 +19,18 @@ async function run(): Promise<void> {
       return;
     }
 
-    const client = new github.GitHub(githubToken);
-    await client.issues.addLabels({
+    const octokit = github.getOctokit(githubToken);
+    await octokit.rest.issues.addLabels({
       labels,
       owner,
       repo,
       issue_number: number
     });
   } catch (e) {
-    core.error(e);
-    core.setFailed(e.message);
+    if (e instanceof Error) {
+      core.error(e);
+      core.setFailed(e.message);
+    }
   }
 }
 
