@@ -23,7 +23,7 @@
   "author": "The Actions Ecosystem Authors",
   "license": "Apache 2.0",
   "dependencies": {
-    "@actions/core": "^1.2.6",
+    "@actions/core": "^1.9.1",
     "@actions/github": "^3.0.0",
     "@octokit/rest": "^17.9.3",
     "semver": "^7.3.2"
