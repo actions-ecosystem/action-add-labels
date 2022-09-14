@@ -11,6 +11,10 @@
     "lint": "eslint src/**/*.ts",
     "test": "jest"
   },
+  "engines": {
+    "node": ">= 16",
+    "npm": ">= 8"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/actions-ecosystem/action-add-labels.git"
