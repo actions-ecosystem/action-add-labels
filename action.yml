@@ -16,6 +16,9 @@ inputs:
   number:
     description: The number of the issue or pull request.
     required: false
+  colors:
+    description: The labels' color to be set. Separate multiple colors with line breaks, each color will be assigned to the label at the matching index.
+    required: false
 runs:
   using: node12
   main: dist/index.js
